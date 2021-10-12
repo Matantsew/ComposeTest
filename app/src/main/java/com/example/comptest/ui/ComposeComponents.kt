@@ -1,27 +1,90 @@
 package com.example.comptest.ui
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.Center
+import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.comptest.R
 import com.example.comptest.ui.theme.BrightGray
+import com.example.comptest.ui.theme.Green
+import com.example.comptest.ui.theme.TextGray
+import com.example.comptest.ui.theme.Typography
 
 @Composable
-fun BaseCardView(clickable: Boolean, function: @Composable BoxScope.() -> Unit) {
+fun WeightView(value: Double){
+
+    Column(
+        Modifier
+            .width(200.dp)
+            .height(100.dp), horizontalAlignment = Alignment.End) {
+        Row(modifier = Modifier
+            .background(color = BrightGray)
+            .height(32.dp)
+            .fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween){
+            MarkerOnScaleCircle()
+            Text(text = "kg", modifier = Modifier
+                .width(30.dp)
+                .align(CenterVertically), style = Typography.body1)
+        }
+
+        val valueToShow = if(value == 0.0) 0 else value
+
+        Text(text = "$valueToShow", fontSize = 50.sp, modifier = Modifier.width(85.dp))
+    }
+}
+
+@Composable
+fun PricePerKGView(value: Double){
+
+    Column(
+        Modifier
+            .width(200.dp)
+            .height(100.dp), horizontalAlignment = Alignment.End) {
+        Row(modifier = Modifier
+            .background(color = BrightGray)
+            .height(32.dp)
+            .fillMaxWidth(), horizontalArrangement = Arrangement.End){
+            Text(text = "CHF/kg", modifier = Modifier
+                .width(70.dp)
+                .align(CenterVertically), style = Typography.body1)
+        }
+
+        val valueToShow = if(value == 0.0) 0 else value
+
+        Text(text = "$valueToShow", fontSize = 50.sp, modifier = Modifier.width(85.dp))
+    }
+}
+
+@Composable
+fun InfoView(info: String){
+    Box(
+        modifier = Modifier
+            .width(400.dp)
+            .height(100.dp)
+    ){
+        Text(text = info, fontSize = 30.sp, modifier = Modifier.align(Center), color = TextGray)
+    }
+}
+
+
+// Components: **************************************************************************************************************************************
+
+@Composable
+fun BaseCardViewShape(clickable: Boolean, function: @Composable BoxScope.() -> Unit) {
 
     Card(modifier = Modifier
         .padding(50.dp)
@@ -35,16 +98,20 @@ fun BaseCardView(clickable: Boolean, function: @Composable BoxScope.() -> Unit) 
 
 @Preview
 @Composable
-fun WeightView(){
+fun MarkerOnScaleCircle(){
 
-    Column(Modifier.width(200.dp)) {
-        Row(modifier = Modifier
-            .background(color = BrightGray)
-            .fillMaxWidth()){
-            Text(text = "kg", modifier = Modifier.padding(5.dp))
-        }
-
-        Text(text = "20.35", fontSize = 30.sp, modifier = Modifier.padding(5.dp))
+    Box(Modifier.padding(15.dp)){
+        Canvas(modifier = Modifier
+            .width(7.dp)
+            .height(7.dp),
+            onDraw = {
+                drawCircle(
+                    color = Green,
+                    12F,
+                    style = Fill,
+                    blendMode = BlendMode.Clear
+                )
+            })
     }
 }
 

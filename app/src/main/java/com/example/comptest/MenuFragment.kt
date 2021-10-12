@@ -8,14 +8,19 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
-import com.example.comptest.ui.BaseCardView
-import com.example.comptest.ui.ProductItem
+import com.example.comptest.ui.BaseCardViewShape
+import com.example.comptest.ui.InfoView
+import com.example.comptest.ui.PricePerKGView
 import com.example.comptest.ui.WeightView
 import com.example.comptest.ui.theme.CompTestTheme
+import com.google.accompanist.flowlayout.FlowRow
 
 class MenuFragment : Fragment() {
 
@@ -29,18 +34,22 @@ class MenuFragment : Fragment() {
             setContent {
                 CompTestTheme {
                     Surface{
-                        Row{
-                            BaseCardView(clickable = false) {
-                                WeightView()
-                            }
-                        }
-                        Column {
+                        Row(horizontalArrangement = Arrangement.SpaceBetween){
+                            FlowRow {
+                                BaseCardViewShape(clickable = false) {
+                                    WeightView(value = 0.0)
+                                }
 
-                            val listOfProducts = remember {
-                                SampleData.products
+                                BaseCardViewShape(clickable = false) {
+                                    PricePerKGView(0.0)
+                                }
                             }
 
-                            //LaunchProductMenu()
+                            FlowRow{
+                                BaseCardViewShape(clickable = false) {
+                                    InfoView("Pick a category below")
+                                }
+                            }
                         }
                     }
                 }
@@ -53,7 +62,7 @@ class MenuFragment : Fragment() {
     fun DefaultPreview() {
         CompTestTheme {
             Row {
-                WeightView()
+                WeightView(12.50)
             }
         }
     }
