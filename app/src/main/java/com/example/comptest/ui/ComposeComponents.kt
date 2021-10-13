@@ -9,41 +9,42 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Alignment.Companion.CenterVertically
+import androidx.compose.ui.Alignment.Companion.End
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Fill
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.comptest.R
-import com.example.comptest.ui.theme.BrightGray
-import com.example.comptest.ui.theme.Green
-import com.example.comptest.ui.theme.TextGray
-import com.example.comptest.ui.theme.Typography
+import com.example.comptest.ui.theme.*
 
 @Composable
 fun WeightView(value: Double){
 
     Column(
         Modifier
-            .width(200.dp)
-            .height(100.dp), horizontalAlignment = Alignment.End) {
+            .width(200.dp), horizontalAlignment = End
+    ) {
         Row(modifier = Modifier
             .background(color = BrightGray)
             .height(32.dp)
             .fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween){
             MarkerOnScaleCircle()
             Text(text = "kg", modifier = Modifier
-                .width(30.dp)
+                .padding(end = 12.dp)
                 .align(CenterVertically), style = Typography.body1)
         }
 
         val valueToShow = if(value == 0.0) 0 else value
 
-        Text(text = "$valueToShow", fontSize = 50.sp, modifier = Modifier.width(85.dp))
+        Text(text = "$valueToShow", fontSize = 50.sp, modifier = Modifier.padding(end = 12.dp), textAlign = TextAlign.Center)
     }
 }
 
@@ -52,20 +53,43 @@ fun PricePerKGView(value: Double){
 
     Column(
         Modifier
-            .width(200.dp)
-            .height(100.dp), horizontalAlignment = Alignment.End) {
+            .width(200.dp), horizontalAlignment = End
+    ) {
         Row(modifier = Modifier
             .background(color = BrightGray)
             .height(32.dp)
             .fillMaxWidth(), horizontalArrangement = Arrangement.End){
             Text(text = "CHF/kg", modifier = Modifier
-                .width(70.dp)
+                .padding(end = 12.dp)
+                .align(CenterVertically), style = Typography.body1)
+        }
+
+        val valueToShow = if(value == 0.0) 0 else value
+        val textColor = if(value == 0.0) TextGray else Color.Black
+
+        Text(text = "$valueToShow", color = textColor, fontSize = 50.sp, modifier = Modifier.padding(end = 12.dp), textAlign = TextAlign.Center)
+    }
+}
+
+@Composable
+fun TotalPriceView(value: Double){
+
+    Column(
+        Modifier
+            .width(200.dp), horizontalAlignment = End
+    ) {
+        Row(modifier = Modifier
+            .background(color = BrightGray)
+            .height(32.dp)
+            .fillMaxWidth(), horizontalArrangement = Arrangement.End){
+            Text(text = "CHF", modifier = Modifier
+                .padding(end = 12.dp)
                 .align(CenterVertically), style = Typography.body1)
         }
 
         val valueToShow = if(value == 0.0) 0 else value
 
-        Text(text = "$valueToShow", fontSize = 50.sp, modifier = Modifier.width(85.dp))
+        Text(text = "$valueToShow", color = Green, fontSize = 50.sp, modifier = Modifier.padding(end = 12.dp), textAlign = TextAlign.Center)
     }
 }
 
@@ -73,10 +97,11 @@ fun PricePerKGView(value: Double){
 fun InfoView(info: String){
     Box(
         modifier = Modifier
-            .width(400.dp)
             .height(100.dp)
     ){
-        Text(text = info, fontSize = 30.sp, modifier = Modifier.align(Center), color = TextGray)
+        Text(text = info, fontSize = 28.sp, modifier = Modifier
+            .align(Center)
+            .padding(start = 70.dp, end = 70.dp), color = TextGray)
     }
 }
 
@@ -84,10 +109,10 @@ fun InfoView(info: String){
 // Components: **************************************************************************************************************************************
 
 @Composable
-fun BaseCardViewShape(clickable: Boolean, function: @Composable BoxScope.() -> Unit) {
+fun BaseCardViewShape(clickable: Boolean = false, endPadding: Dp = 0.dp, function: @Composable BoxScope.() -> Unit) {
 
     Card(modifier = Modifier
-        .padding(50.dp)
+        .padding(end = endPadding)
         .border(width = 0.5.dp, color = Color.Gray, shape = RoundedCornerShape(7.dp))
         .clip(RoundedCornerShape(7.dp))
         .clickable(enabled = clickable, onClick = {})){
@@ -100,18 +125,18 @@ fun BaseCardViewShape(clickable: Boolean, function: @Composable BoxScope.() -> U
 @Composable
 fun MarkerOnScaleCircle(){
 
-    Box(Modifier.padding(15.dp)){
-        Canvas(modifier = Modifier
-            .width(7.dp)
-            .height(7.dp),
-            onDraw = {
-                drawCircle(
-                    color = Green,
-                    12F,
-                    style = Fill,
-                    blendMode = BlendMode.Clear
-                )
-            })
+    Box(modifier = Modifier.width(30.dp).height(30.dp), contentAlignment = Center) {
+
+            Canvas(modifier = Modifier
+                .padding(top = 3.dp, start = 3.dp)
+                .width(15.dp)
+                .height(15.dp),
+                onDraw = {
+                    drawCircle(
+                        color = Gray
+                    )
+                }
+            )
     }
 }
 

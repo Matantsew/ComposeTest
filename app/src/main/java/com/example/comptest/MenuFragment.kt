@@ -15,10 +15,7 @@ import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
-import com.example.comptest.ui.BaseCardViewShape
-import com.example.comptest.ui.InfoView
-import com.example.comptest.ui.PricePerKGView
-import com.example.comptest.ui.WeightView
+import com.example.comptest.ui.*
 import com.example.comptest.ui.theme.CompTestTheme
 import com.google.accompanist.flowlayout.FlowRow
 
@@ -34,20 +31,24 @@ class MenuFragment : Fragment() {
             setContent {
                 CompTestTheme {
                     Surface{
-                        Row(horizontalArrangement = Arrangement.SpaceBetween){
+                        Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.padding(20.dp)){
                             FlowRow {
-                                BaseCardViewShape(clickable = false) {
+                                BaseCardViewShape(endPadding = 20.dp) {
                                     WeightView(value = 0.0)
                                 }
 
-                                BaseCardViewShape(clickable = false) {
+                                BaseCardViewShape {
                                     PricePerKGView(0.0)
                                 }
                             }
 
                             FlowRow{
-                                BaseCardViewShape(clickable = false) {
+                                BaseCardViewShape(endPadding = 20.dp) {
                                     InfoView("Pick a category below")
+                                }
+
+                                BaseCardViewShape {
+                                    TotalPriceView(0.0)
                                 }
                             }
                         }
@@ -61,8 +62,10 @@ class MenuFragment : Fragment() {
     @Composable
     fun DefaultPreview() {
         CompTestTheme {
-            Row {
-                WeightView(12.50)
+            FlowRow {
+                BaseCardViewShape(clickable = false){
+                    WeightView(0.0)
+                }
             }
         }
     }
