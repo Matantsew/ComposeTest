@@ -20,7 +20,7 @@ object SampleData {
         add(Category("Spezialbrot", R.drawable.sliced_bread))
         add(Category("Grossbrot", R.drawable.bread))
         add(Category("Fruits", null))
-        add(Category("Vegetables", null))
-        add(Category("Zopf", null))
+        /*add(Category("Vegetables", null))
+        add(Category("Zopf", null))*/
     }
 }

@@ -16,6 +16,7 @@ import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -36,10 +37,13 @@ fun WeightView(value: Double){
             .background(color = BrightGray)
             .height(32.dp)
             .fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween){
-            MarkerOnScaleCircle()
-            Text(text = "kg", modifier = Modifier
-                .padding(end = 12.dp)
-                .align(CenterVertically), style = Typography.body1)
+
+                val markerColor = if(value == 0.0) Gray else Green
+                MarkerOnScaleCircle(markerColor)
+
+                Text(text = "kg", modifier = Modifier
+                    .padding(end = 12.dp)
+                    .align(CenterVertically), style = Typography.body1)
         }
 
         val valueToShow = if(value == 0.0) 0 else value
@@ -105,6 +109,21 @@ fun InfoView(info: String){
     }
 }
 
+@Composable
+fun ProductItem(){
+
+    Box {
+
+        Image(painter = painterResource(id = R.drawable.vege_pic),
+            contentDescription = "Product photo")
+       /*
+        Text(text = "content",
+            fontSize = 25.sp,
+            textAlign = TextAlign.Center)*/
+    }
+}
+
+
 
 // Components: **************************************************************************************************************************************
 
@@ -117,13 +136,12 @@ fun BaseCardViewShape(clickable: Boolean = false, endPadding: Dp = 0.dp, functio
         .clip(RoundedCornerShape(7.dp))
         .clickable(enabled = clickable, onClick = {})){
 
-        Box(contentAlignment = Alignment.Center, content = function)
+        Box(contentAlignment = Center, content = function)
     }
 }
 
-@Preview
 @Composable
-fun MarkerOnScaleCircle(){
+fun MarkerOnScaleCircle(markerColor: Color){
 
     Box(modifier = Modifier.width(30.dp).height(30.dp), contentAlignment = Center) {
 
@@ -133,47 +151,9 @@ fun MarkerOnScaleCircle(){
                 .height(15.dp),
                 onDraw = {
                     drawCircle(
-                        color = Gray
+                        color = markerColor
                     )
                 }
             )
-    }
-}
-
-@Composable
-fun Picture() {
-
-    Image(painter = painterResource(id = R.drawable.vege_pic),
-        contentDescription = "Product photo", modifier = Modifier.clip(RoundedCornerShape(10.dp)))
-}
-
-@Composable
-fun ProductItem(){
-
-    Card(modifier = Modifier
-        .padding(50.dp)
-        .border(width = 0.5.dp, color = Color.Gray, shape = RoundedCornerShape(10.dp))
-        .clip(RoundedCornerShape(10.dp))
-        .clickable(enabled = true, onClick = {
-
-        })){
-
-        Box(contentAlignment = Alignment.Center) {
-            Picture()
-/*
-                Text(text = content,
-                    fontSize = 25.sp,
-                    textAlign = TextAlign.Center)*/
-        }
-    }
-}
-
-@Composable
-fun LaunchProductMenu() {
-    Row(
-        modifier = Modifier
-            .padding(10.dp)
-    ) {
-        ProductItem()
     }
 }

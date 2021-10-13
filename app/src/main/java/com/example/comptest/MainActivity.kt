@@ -12,7 +12,7 @@ class MainActivity : FragmentActivity() {
 
         val testViewModel: TestViewModel by viewModels()
 
-        val menuFragment = MenuFragment()
+        val menuFragment = HomeFragment()
         val categoryFragment = CategoryFragment()
 
         supportFragmentManager
