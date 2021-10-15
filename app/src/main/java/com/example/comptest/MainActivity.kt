@@ -17,7 +17,12 @@ class MainActivity : FragmentActivity() {
 
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.menu_container, menuFragment)
+            .replace(R.id.top_info_container, menuFragment)
+            .commit()
+
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.categories_container, categoryFragment)
             .commit()
     }
 }

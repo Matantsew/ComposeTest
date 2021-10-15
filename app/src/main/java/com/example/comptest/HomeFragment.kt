@@ -15,6 +15,7 @@ import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Alignment.Companion.Top
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.tooling.preview.Preview
@@ -48,11 +49,11 @@ class HomeFragment : Fragment() {
     fun CreateMenu(){
 
         Row(horizontalArrangement = Arrangement.SpaceBetween,
-            modifier = Modifier.padding(20.dp)
+            modifier = Modifier.padding(20.dp).height(85.dp)
         ) {                                                                                                 // Top info row
             Row() {
                 BaseCardViewShape(endPadding = 20.dp) {
-                    WeightView(value = 0.0)
+                    WeightView(value = 2.20)
                 }
 
                 BaseCardViewShape {
@@ -68,39 +69,6 @@ class HomeFragment : Fragment() {
                 BaseCardViewShape {
                     TotalPriceView(0.0)
                 }
-            }
-        }
-
-        Column(horizontalAlignment = CenterHorizontally, verticalArrangement = Arrangement.Center) {                                                     // Categories
-            Row(modifier = Modifier.padding(top = 20.dp, bottom = 20.dp)) {
-                BaseCardViewShape(clickable = true, endPadding = 20.dp) {
-                    ProductItem()
-                }
-                BaseCardViewShape(clickable = true, endPadding = 20.dp) {
-                    ProductItem()
-                }
-                BaseCardViewShape(clickable = true, endPadding = 20.dp) {
-                    ProductItem()
-                }
-            }
-
-            Row {
-                BaseCardViewShape(clickable = true, endPadding = 20.dp) {
-                    ProductItem()
-                }
-                BaseCardViewShape(clickable = true, endPadding = 20.dp) {
-                    ProductItem()
-                }
-            }
-        }
-    }
-
-    @Preview(showBackground = true)
-    @Composable
-    fun DefaultPreview() {
-        CompTestTheme {
-            Surface {
-                CreateMenu()
             }
         }
     }

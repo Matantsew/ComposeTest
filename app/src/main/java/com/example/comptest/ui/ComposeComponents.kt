@@ -31,7 +31,7 @@ fun WeightView(value: Double){
 
     Column(
         Modifier
-            .width(200.dp), horizontalAlignment = End
+            .width(150.dp), horizontalAlignment = End
     ) {
         Row(modifier = Modifier
             .background(color = BrightGray)
@@ -48,7 +48,7 @@ fun WeightView(value: Double){
 
         val valueToShow = if(value == 0.0) 0 else value
 
-        Text(text = "$valueToShow", fontSize = 50.sp, modifier = Modifier.padding(end = 12.dp), textAlign = TextAlign.Center)
+        Text(text = "$valueToShow", fontSize = 40.sp, modifier = Modifier.padding(end = 12.dp), textAlign = TextAlign.Center)
     }
 }
 
@@ -57,7 +57,7 @@ fun PricePerKGView(value: Double){
 
     Column(
         Modifier
-            .width(200.dp), horizontalAlignment = End
+            .width(150.dp), horizontalAlignment = End
     ) {
         Row(modifier = Modifier
             .background(color = BrightGray)
@@ -71,7 +71,7 @@ fun PricePerKGView(value: Double){
         val valueToShow = if(value == 0.0) 0 else value
         val textColor = if(value == 0.0) TextGray else Color.Black
 
-        Text(text = "$valueToShow", color = textColor, fontSize = 50.sp, modifier = Modifier.padding(end = 12.dp), textAlign = TextAlign.Center)
+        Text(text = "$valueToShow", color = textColor, fontSize = 40.sp, modifier = Modifier.padding(end = 12.dp), textAlign = TextAlign.Center)
     }
 }
 
@@ -80,7 +80,7 @@ fun TotalPriceView(value: Double){
 
     Column(
         Modifier
-            .width(200.dp), horizontalAlignment = End
+            .width(150.dp), horizontalAlignment = End
     ) {
         Row(modifier = Modifier
             .background(color = BrightGray)
@@ -93,7 +93,7 @@ fun TotalPriceView(value: Double){
 
         val valueToShow = if(value == 0.0) 0 else value
 
-        Text(text = "$valueToShow", color = Green, fontSize = 50.sp, modifier = Modifier.padding(end = 12.dp), textAlign = TextAlign.Center)
+        Text(text = "$valueToShow", color = Green, fontSize = 40.sp, modifier = Modifier.padding(end = 12.dp), textAlign = TextAlign.Center)
     }
 }
 
