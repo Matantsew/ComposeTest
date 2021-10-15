@@ -103,7 +103,7 @@ fun InfoView(info: String){
         modifier = Modifier
             .height(100.dp)
     ){
-        Text(text = info, fontSize = 28.sp, modifier = Modifier
+        Text(text = info, fontSize = 23.sp, modifier = Modifier
             .align(Center)
             .padding(start = 70.dp, end = 70.dp), color = TextGray)
     }
@@ -115,7 +115,7 @@ fun ProductItem(){
     Box {
 
         Image(painter = painterResource(id = R.drawable.vege_pic),
-            contentDescription = "Product photo")
+            contentDescription = "Product photo", modifier = Modifier.height(140.dp))
        /*
         Text(text = "content",
             fontSize = 25.sp,
