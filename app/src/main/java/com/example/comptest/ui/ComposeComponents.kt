@@ -1,7 +1,10 @@
 package com.example.comptest.ui
 
 import androidx.compose.foundation.*
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Text
@@ -20,6 +23,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.comptest.R
+import com.example.comptest.SampleData.products
 import com.example.comptest.ui.theme.*
 
 @Composable
@@ -125,8 +129,12 @@ fun ProductItem(pictureId: Int? = null, productName: String? = null){
     val picId = pictureId ?: R.drawable.ic_baseline_local_grocery_store_24
     val prodName = productName ?: "product"
 
-    Column(modifier = Modifier.width(150.dp).height(150.dp), verticalArrangement = Arrangement.SpaceBetween) {
-        Image(modifier = Modifier.fillMaxWidth().height(100.dp),
+    Column(modifier = Modifier
+        .width(150.dp)
+        .height(150.dp), verticalArrangement = Arrangement.SpaceBetween) {
+        Image(modifier = Modifier
+            .fillMaxWidth()
+            .height(100.dp),
             painter = painterResource(id = picId),
             contentDescription = "Product photo")
 
@@ -148,15 +156,19 @@ fun <T> ComposableGridView(
     child: @Composable (dataModal: T) -> Unit
 ) {
 
-    val rows = (list.size / cols) + (if (list.size % cols > 0) 1 else 0)
+    val rows = 2 // (list.size / cols) + (if (list.size % cols > 0) 1 else 0)
 
-    Column(modifier = colModifier) {
+    LazyRow{
+        items(1){
+            Column(modifier = colModifier) {
 
-        for (r in 0 until rows) {
-            Row(modifier = rowModifier, horizontalArrangement = Arrangement.SpaceAround) {
-                for (cell in 0 until cols) {
-                    val i = (r * cols) + cell
-                    if (i < list.size) { child(list[i]) } else { break }
+                for (r in 0 until rows) {
+                    Row(modifier = rowModifier, horizontalArrangement = Arrangement.SpaceAround) {
+                        for (cell in 0 until cols) {
+                            val i = (r * cols) + cell
+                            if (i < list.size) { child(list[i]) } else { break }
+                        }
+                    }
                 }
             }
         }
@@ -165,6 +177,7 @@ fun <T> ComposableGridView(
 
 
 // Components: **************************************************************************************************************************************
+
 
 @Composable
 fun BaseCardViewShape(clickable: Boolean = false, allPadding: Dp = 0.dp, endPadding: Dp = 0.dp, function: @Composable BoxScope.() -> Unit) {

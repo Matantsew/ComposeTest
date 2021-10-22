@@ -32,7 +32,10 @@ class MainActivity : FragmentActivity() {
     @Composable
     fun TestGrid(){
         CompTestTheme{
-            ComposableGridView(cols = 7, products){
+
+            val columns = if(products.size % 2 == 0)products.size / 2 else products.size / 2 + 1
+
+            ComposableGridView(cols = columns, products){
                 BaseCardViewShape(clickable = true, allPadding = 10.dp) {
                     ProductItem(pictureId = it.imageId, productName = it.content)
                 }
