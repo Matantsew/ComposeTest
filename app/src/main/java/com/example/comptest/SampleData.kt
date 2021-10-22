@@ -10,6 +10,7 @@ object SampleData {
         add(Product("Nussbrot", null))
         add(Product("Kornbrot", null))
         add(Product("Nusskornbrot", null))
+        add(Product("Neu brot", null))
         add(Product("Brot", R.drawable.bread))
         add(Product("Neubrot", null))
         add(Product("Brot", R.drawable.bread))

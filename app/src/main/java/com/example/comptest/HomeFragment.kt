@@ -53,11 +53,11 @@ class HomeFragment : Fragment() {
         ) {                                                                                                 // Top info row
             Row() {
                 BaseCardViewShape(endPadding = 20.dp) {
-                    WeightView(value = 2.20)
+                    WeightView(value = 4.35)
                 }
 
                 BaseCardViewShape {
-                    PricePerKGView(0.0)
+                    PricePerKGView(1.85)
                 }
             }
 
