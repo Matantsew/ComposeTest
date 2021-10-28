@@ -189,7 +189,7 @@ fun BaseCardViewShape(clickable: Boolean = false, allPadding: Dp = 0.dp, endPadd
         .clip(RoundedCornerShape(7.dp))
         .clickable(enabled = clickable, onClick = {})){
 
-        Box(contentAlignment = Center, content = function)
+        Box(modifier = Modifier.clip(RoundedCornerShape(7.dp)), contentAlignment = Center, content = function)
     }
 }
 
