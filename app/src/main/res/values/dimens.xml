@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="none">0dp</dimen>
+    <dimen name="marginXS">2dp</dimen>
+    <dimen name="marginS">5dp</dimen>
+    <dimen name="marginM">10dp</dimen>
+    <dimen name="marginL">16dp</dimen>
+    <dimen name="marginXL">24dp</dimen>
+    <dimen name="marginXXL">38dp</dimen>
+    <dimen name="marginXXXL">50dp</dimen>
+
+    <dimen name="corner">8dp</dimen>
+
+    <dimen name="h1">22dp</dimen>
+    <dimen name="h2">18dp</dimen>
+    <dimen name="h3">14dp</dimen>
+    <dimen name="h4">12dp</dimen>
+    <dimen name="h5">10dp</dimen>
+    <dimen name="h6">9dp</dimen>
+
+</resources>

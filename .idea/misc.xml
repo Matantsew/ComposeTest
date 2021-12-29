@@ -45,13 +45,33 @@
         <entry key="../../../../layout/compose-model-1634897433071.xml" value="0.5" />
         <entry key="../../../../layout/compose-model-1634897985972.xml" value="1.0" />
         <entry key="../../../../layout/compose-model-1634898353657.xml" value="0.375" />
+        <entry key="../../../../layout/compose-model-1637572316894.xml" value="0.25555555555555554" />
+        <entry key="../../../../layout/compose-model-1637588333478.xml" value="0.4511363636363636" />
+        <entry key="../../../../layout/compose-model-1637588889208.xml" value="0.45" />
+        <entry key="../../../../layout/compose-model-1637589592997.xml" value="0.335" />
+        <entry key="../../../../layout/compose-model-1637590865669.xml" value="0.375" />
+        <entry key="../../../../layout/compose-model-1640263686096.xml" value="0.3435185185185185" />
+        <entry key="../../../../layout/custom_preview.xml" value="0.32407407407407407" />
+        <entry key="app/src/main/res/drawable-v24/ic_icon_for_chf_kg.xml" value="0.36203703703703705" />
+        <entry key="app/src/main/res/drawable-v24/ic_icon_for_kg.xml" value="0.36203703703703705" />
+        <entry key="app/src/main/res/drawable-v24/ic_icon_for_t_kg.xml" value="0.36203703703703705" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2604166666666667" />
+        <entry key="app/src/main/res/drawable-v24/ic_pay.xml" value="0.36203703703703705" />
+        <entry key="app/src/main/res/drawable/ic_baseline_arrow_right_24.xml" value="0.32407407407407407" />
+        <entry key="app/src/main/res/drawable/ic_baseline_backspace_24.xml" value="0.1875" />
         <entry key="app/src/main/res/drawable/ic_baseline_local_grocery_store_24.xml" value="0.3111111111111111" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2604166666666667" />
         <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.22447916666666667" />
+        <entry key="app/src/main/res/drawable/shape.xml" value="0.3435185185185185" />
+        <entry key="app/src/main/res/layout-v31/scale_view.xml" value="0.3052536231884058" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/dialog_custom_date_picker.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/diaolg_custom_date_picker.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/scale_view.xml" value="0.55" />
+        <entry key="app/src/main/res/layout/weeks_view.xml" value="0.3451086956521739" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2604166666666667" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2604166666666667" />
+        <entry key="app/src/main/res/xml/keyboard.xml" value="0.29030797101449274" />
       </map>
     </option>
   </component>

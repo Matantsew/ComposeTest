@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:id="@+id/weeks_layout"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/week_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_1_d_1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:visibility="invisible" />
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_1_d_2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:visibility="invisible"/>
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_1_d_3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            />
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_1_d_4"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_1_d_5"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_1_d_6"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_1_d_7"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/week_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_2_d_1"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_2_d_2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_2_d_3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_2_d_4"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_2_d_5"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_2_d_6"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_2_d_7"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/week_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="fill_horizontal"
+        android:orientation="horizontal">
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_3_d_1"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_3_d_2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_3_d_3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_3_d_4"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_3_d_5"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_3_d_6"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_3_d_7"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/week_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="fill_horizontal"
+        android:orientation="horizontal">
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_4_d_1"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_4_d_2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_4_d_3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_4_d_4"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_4_d_5"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_4_d_6"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_4_d_7"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/week_5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="fill_horizontal"
+        android:orientation="horizontal">
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_5_d_1"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_5_d_2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_5_d_3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_5_d_4"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_5_d_5"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_5_d_6"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:visibility="invisible"/>
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_5_d_7"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:visibility="invisible"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/week_6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="fill_horizontal"
+        android:visibility="invisible"
+        android:orientation="horizontal">
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_6_d_1"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_6_d_2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_6_d_3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_6_d_4"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_6_d_5"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_6_d_6"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+        <com.example.comptest.ui.CalendarDayButton
+            android:id="@+id/w_6_d_7"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

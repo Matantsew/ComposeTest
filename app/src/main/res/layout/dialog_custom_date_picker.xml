@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="2">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:padding="50dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:textSize="22sp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:text="@string/monday"/>
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:textSize="22sp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:text="@string/tuesday"/>
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:textSize="22sp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:text="@string/wednesday"/>
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:textSize="22sp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:text="@string/thursday"/>
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:textSize="22sp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:text="@string/friday"/>
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:textSize="22sp"
+                android:gravity="center"
+                android:textColor="@color/colorAccent"
+                android:text="@string/saturday"/>
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:textSize="22sp"
+                android:gravity="center"
+                android:textColor="@color/colorAccent"
+                android:text="@string/sunday"/>
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/weeks_view_recycler"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/right_side"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/month_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:gravity="start"
+            android:layout_margin="40dp"
+            android:text="Dezember 2021"/>
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:gravity="start"
+            android:layout_margin="40dp"
+            android:text="Mittwoch, 15"/>
+<!--
+        <Button
+            android:id="@+id/ok_button"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="@string/keyOk"
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            style="@style/OutlineButton"/>
+
+        <Button
+            android:id="@+id/cancel_button"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="@string/cancel"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="@color/colorTransparent"
+            style="@style/OutlineButton"/>-->
+
+    </LinearLayout>
+
+
+</LinearLayout>

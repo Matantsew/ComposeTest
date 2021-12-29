@@ -1,10 +1,8 @@
 package com.example.comptest
 
 import android.os.Bundle
-import androidx.activity.compose.setContent
-import androidx.activity.viewModels
+import android.widget.Button
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.ScrollableTabRow
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -15,18 +13,36 @@ import com.example.comptest.ui.BaseCardViewShape
 import com.example.comptest.ui.ComposableGridView
 import com.example.comptest.ui.ProductItem
 import com.example.comptest.ui.theme.CompTestTheme
+import java.util.*
 
 class MainActivity : FragmentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main)
 
-        val testViewModel: TestViewModel by viewModels()
+        findViewById<Button>(R.id.button_test).setOnClickListener {
 
-        setContent {
-            TestGrid()
+            val calendar = Calendar.getInstance()
+
+            val dialog = CustomDatePickerDialog(
+                this,
+                null,
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH))
+
+            dialog.show()
         }
+
+/*
+        setContent {
+            CompTestTheme {
+                Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.BottomCenter) {
+                    Keyboard()
+                }
+            }
+        }*/
     }
 
     @Composable

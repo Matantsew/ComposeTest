@@ -19,6 +19,34 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="ScaleCardViewTextValue">
+        <item name="android:layout_height">0dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">@dimen/h3</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+
+    <style name="ScaleCardView">
+        <item name="cardCornerRadius">3dp</item>
+        <item name="android:layout_height">77dp</item>
+        <item name="android:layout_width">0dp</item>
+    </style>
+
+    <style name="ScaleCardViewTextTitle">
+        <item name="android:layout_height">24dp</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:gravity">center|start</item>
+        <item name="android:paddingStart">@dimen/marginM</item>
+        <item name="android:paddingEnd">@dimen/marginM</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
     <style name="Theme.CompTest.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.CompTest.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
