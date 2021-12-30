@@ -31,10 +31,7 @@ class CustomDatePickerDialog(context: Context, listener: DatePickerDialog.OnDate
         binding = DialogCustomDatePickerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val monthStartsAtDay = calendar.firstDayOfFirstWeek()
-        val daysInMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
-
-        binding.weeksViewPager.adapter = CalendarViewPagerAdapter(fragmentActivity, monthStartsAtDay, daysInMonth)
+        binding.weeksViewPager.adapter = CalendarViewPagerAdapter(fragmentActivity, calendar)
     }
 
     override fun onClick(p0: DialogInterface?, p1: Int) {
@@ -45,22 +42,34 @@ class CustomDatePickerDialog(context: Context, listener: DatePickerDialog.OnDate
         TODO("Not yet implemented")
     }
 
-    private fun Calendar.firstDayOfFirstWeek(): Int {
-        val simpleDateFormat = SimpleDateFormat("u")
+    class CalendarViewPagerAdapter(fragmentActivity: FragmentActivity, private val calendar: Calendar) : FragmentStateAdapter(fragmentActivity) {
 
-        return simpleDateFormat.format(this.time).toInt()
-    }
-
-    class CalendarViewPagerAdapter(fragmentActivity: FragmentActivity, private val dayOfWeekStarts: Int, private val daysInMonthCount: Int,
-    ) : FragmentStateAdapter(fragmentActivity) {
-
-        override fun getItemCount() = 7
+        override fun getItemCount() = 12 * 100
 
         override fun createFragment(position: Int): Fragment {
 
-            val weeksFragment = WeeksViewFragment(position+1, 31, 3)
+            val dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH)
+            val monthStartsAtDay = calendar.getFirstDayNameOfFirstWeek()
+            val daysInMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
+
+            val weeksFragment = if(calendar.get(Calendar.MONTH) == getActualMonth())
+                WeeksViewFragment(monthStartsAtDay, daysInMonth, dayOfMonth)
+            else WeeksViewFragment(monthStartsAtDay, daysInMonth)
 
             return weeksFragment
+        }
+
+        private fun Calendar.getFirstDayNameOfFirstWeek(): Int {
+            val simpleDateFormat = SimpleDateFormat("u")
+
+            val checkCalendar = Calendar.getInstance()
+            checkCalendar.set(this.get(Calendar.YEAR), this.get(Calendar.MONTH), 1)
+
+            return simpleDateFormat.format(checkCalendar.time).toInt()
+        }
+
+        private fun getActualMonth(): Int{
+            return Calendar.getInstance().get(Calendar.MONTH)
         }
 
     }
