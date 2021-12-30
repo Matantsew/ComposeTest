@@ -21,6 +21,6 @@ class ExampleUnitTest {
         val sdf = SimpleDateFormat("u")
         val firstDayName = sdf.format(calendar.time).toInt()
 
-        assertEquals(5, firstDayName)
+        assertEquals(3, firstDayName)
     }
 }
