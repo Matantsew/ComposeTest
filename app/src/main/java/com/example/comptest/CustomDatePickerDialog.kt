@@ -32,6 +32,7 @@ class CustomDatePickerDialog(context: Context, listener: DatePickerDialog.OnDate
         setContentView(binding.root)
 
         binding.weeksViewPager.adapter = CalendarViewPagerAdapter(fragmentActivity, calendar)
+        binding.weeksViewPager.setCurrentItem(600, false)
     }
 
     override fun onClick(p0: DialogInterface?, p1: Int) {
@@ -44,19 +45,28 @@ class CustomDatePickerDialog(context: Context, listener: DatePickerDialog.OnDate
 
     class CalendarViewPagerAdapter(fragmentActivity: FragmentActivity, private val calendar: Calendar) : FragmentStateAdapter(fragmentActivity) {
 
+        private val MIDDLE_COUNT_ITEMS = 600
+
+        private val actualDate = Calendar.getInstance()
+
         override fun getItemCount() = 12 * 100
 
         override fun createFragment(position: Int): Fragment {
 
-            val dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH)
-            val monthStartsAtDay = calendar.getFirstDayNameOfFirstWeek()
-            val daysInMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
+            val scrolledToPosition = MIDDLE_COUNT_ITEMS - position
 
-            val weeksFragment = if(calendar.get(Calendar.MONTH) == getActualMonth())
-                WeeksViewFragment(monthStartsAtDay, daysInMonth, dayOfMonth)
+            val monthToShow = setMonth(scrolledToPosition)
+
+            val today = actualDate.get(Calendar.DAY_OF_MONTH)
+
+            val monthStartsAtDay = monthToShow.getFirstDayNameOfFirstWeek()
+            val daysInMonth = monthToShow.getActualMaximum(Calendar.DAY_OF_MONTH)
+
+            return if (monthToShow.get(Calendar.YEAR) == actualDate.get(Calendar.YEAR) &&
+                monthToShow.get(Calendar.MONTH) == actualDate.get(Calendar.MONTH) &&
+                monthToShow.get(Calendar.DAY_OF_MONTH) == actualDate.get(Calendar.DAY_OF_MONTH)
+                    ) WeeksViewFragment(monthStartsAtDay, daysInMonth, today)
             else WeeksViewFragment(monthStartsAtDay, daysInMonth)
-
-            return weeksFragment
         }
 
         private fun Calendar.getFirstDayNameOfFirstWeek(): Int {
@@ -68,8 +78,28 @@ class CustomDatePickerDialog(context: Context, listener: DatePickerDialog.OnDate
             return simpleDateFormat.format(checkCalendar.time).toInt()
         }
 
-        private fun getActualMonth(): Int{
-            return Calendar.getInstance().get(Calendar.MONTH)
+        private fun setMonth(diff: Int): Calendar{
+
+            var year = calendar.get(Calendar.YEAR)
+            var month = calendar.get(Calendar.MONTH)
+            val day = 1
+
+            if(month - diff == 12){
+                month = Calendar.JANUARY
+                year++
+            }
+            else if(month - diff == -1){
+                month = Calendar.DECEMBER
+                year--
+            }
+            else {
+                month -= diff
+            }
+
+            val differedCalendar = Calendar.getInstance()
+            differedCalendar.set(year, month, day)
+
+            return differedCalendar
         }
 
     }

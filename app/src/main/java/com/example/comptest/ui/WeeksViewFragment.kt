@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import com.example.comptest.R
 import com.example.comptest.databinding.WeeksViewBinding
 
-class WeeksViewFragment(private val dayOfWeekStarts: Int, private val daysInMonthCount: Int, private val actualDateNumber: Int? = null) : Fragment(){
+class WeeksViewFragment(private val dayOfWeekStarts: Int, private val daysInMonthCount: Int, private val todayDayNumber: Int? = null) : Fragment(){
 
     private lateinit var binding: WeeksViewBinding
 
@@ -26,7 +26,7 @@ class WeeksViewFragment(private val dayOfWeekStarts: Int, private val daysInMont
             val calendarDay = binding.weeksLayout.findViewById<CalendarSelectableDayButton> (calendarDays[dayOfWeekStarts-1 + it])
             calendarDay.visibility = View.VISIBLE
             calendarDay.dateNumber = it + 1
-            if(it + 1 == actualDateNumber)calendarDay.actualDate = true
+            if(it + 1 == todayDayNumber)calendarDay.actualDate = true
         }
     }
 
