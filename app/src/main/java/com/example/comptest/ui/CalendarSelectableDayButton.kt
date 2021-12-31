@@ -14,6 +14,7 @@ class CalendarSelectableDayButton @JvmOverloads constructor(context: Context,
 ) : CalendarCircleButton(context, attrs, defStyleAttr){
 
     var actualDate: Boolean
+    var dateSelected: Boolean
     var isWeekend: Boolean
     var dateNumber: Int
 
@@ -24,6 +25,7 @@ class CalendarSelectableDayButton @JvmOverloads constructor(context: Context,
 
         try {
             actualDate = attributes.getBoolean(R.styleable.CalendarSelectableDayButton_actualDate, false)
+            dateSelected = attributes.getBoolean(R.styleable.CalendarSelectableDayButton_dateSelected, false)
             dateNumber = attributes.getInt(R.styleable.CalendarSelectableDayButton_dateNumber, 0)
             isWeekend = attributes.getBoolean(R.styleable.CalendarSelectableDayButton_isWeekend, false)
         }
@@ -40,7 +42,7 @@ class CalendarSelectableDayButton @JvmOverloads constructor(context: Context,
     private val paintText = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.FILL
         textAlign = Paint.Align.CENTER
-        textSize = 21.0f
+        textSize = 24.0f
         typeface = Typeface.create( "", Typeface.NORMAL)
         color = if(isWeekend)resources.getColor(R.color.colorAccent, resources.newTheme()) else Color.BLACK
     }
@@ -59,7 +61,12 @@ class CalendarSelectableDayButton @JvmOverloads constructor(context: Context,
 
         if(actualDate) {
             paintCircle.style = Paint.Style.STROKE
-            canvas.drawCircle((width / 2).toFloat(), (height / 2).toFloat(), radius, paintCircle)
+            canvas.drawCircle(((width - 2.5) / 2).toFloat(), (height / 2).toFloat(), radius, paintCircle)
+        }
+
+        if(dateSelected){
+            paintCircle.style = Paint.Style.FILL
+            canvas.drawCircle(((width - 2.5) / 2).toFloat(), (height / 2).toFloat(), radius, paintCircle)
         }
 
         canvas.drawText(dateNumber.toString(), (width / 2).toFloat(), ((height + 15.0) / 2).toFloat(), paintText)
