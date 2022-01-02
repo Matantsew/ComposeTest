@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.comptest.databinding.DialogCustomDatePickerBinding
+import com.example.comptest.ui.CalendarSelectableDayButton
 import com.example.comptest.ui.MonthFragment
 import java.text.SimpleDateFormat
 import java.util.*
@@ -40,6 +41,10 @@ class CustomDatePickerDialog(private val fragmentActivity: FragmentActivity, lis
 
     override fun onSelectedDayChange(p0: CalendarView, p1: Int, p2: Int, p3: Int) {
         TODO("Not yet implemented")
+    }
+
+    interface OnDateSetClickListener{
+        fun onDateSet(calendarSelectableDayButton: CalendarSelectableDayButton)
     }
 
     class CalendarViewPagerAdapter(fragmentActivity: FragmentActivity, private val calendar: Calendar) : FragmentStateAdapter(fragmentActivity) {

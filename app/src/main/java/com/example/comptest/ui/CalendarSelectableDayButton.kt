@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Typeface
 import android.util.AttributeSet
+import com.example.comptest.CustomDatePickerDialog
 import com.example.comptest.R
 
 class CalendarSelectableDayButton @JvmOverloads constructor(context: Context,
@@ -17,6 +18,8 @@ class CalendarSelectableDayButton @JvmOverloads constructor(context: Context,
     var dateSelected: Boolean
     var isWeekend: Boolean
     var dateNumber: Int
+
+    private var onDateSetClickListener: CustomDatePickerDialog.OnDateSetClickListener? = null
 
     init{
         isClickable = true
@@ -46,12 +49,15 @@ class CalendarSelectableDayButton @JvmOverloads constructor(context: Context,
         typeface = Typeface.create( "", Typeface.NORMAL)
     }
 
+    fun setOnDateSetListener(onDateSetClickListener: CustomDatePickerDialog.OnDateSetClickListener){
+        this.onDateSetClickListener = onDateSetClickListener
+    }
+
     override fun performClick(): Boolean {
         if(super.performClick())return true
 
-        if(!dateSelected)dateSelected = true
+        onDateSetClickListener?.onDateSet(this)
 
-        invalidate()
         return true
     }
 
