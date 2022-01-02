@@ -2,7 +2,6 @@ package com.example.comptest
 
 import android.app.AlertDialog
 import android.app.DatePickerDialog
-import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import android.widget.CalendarView
@@ -14,9 +13,9 @@ import com.example.comptest.ui.MonthFragment
 import java.text.SimpleDateFormat
 import java.util.*
 
-class CustomDatePickerDialog(context: Context, listener: DatePickerDialog.OnDateSetListener?, private val fragmentActivity: FragmentActivity,
+class CustomDatePickerDialog(private val fragmentActivity: FragmentActivity, listener: DatePickerDialog.OnDateSetListener?,
                              year: Int, month: Int, dayOfMonth: Int)
-    : AlertDialog(context), DialogInterface.OnClickListener, CalendarView.OnDateChangeListener{
+    : AlertDialog(fragmentActivity), DialogInterface.OnClickListener, CalendarView.OnDateChangeListener{
 
     private var calendar: Calendar = Calendar.getInstance()
 

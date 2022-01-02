@@ -44,13 +44,12 @@ class CalendarSelectableDayButton @JvmOverloads constructor(context: Context,
         textAlign = Paint.Align.CENTER
         textSize = 24.0f
         typeface = Typeface.create( "", Typeface.NORMAL)
-        color = if(isWeekend)resources.getColor(R.color.colorAccent, resources.newTheme()) else Color.BLACK
     }
 
     override fun performClick(): Boolean {
         if(super.performClick())return true
 
-
+        if(!dateSelected)dateSelected = true
 
         invalidate()
         return true
@@ -69,6 +68,14 @@ class CalendarSelectableDayButton @JvmOverloads constructor(context: Context,
             canvas.drawCircle(((width - 2.5) / 2).toFloat(), (height / 2).toFloat(), radius, paintCircle)
         }
 
+        if(isWeekend && dateSelected)setTextColor(Color.BLACK)
+        else if(isWeekend) setTextColor(resources.getColor(R.color.colorAccent, resources.newTheme()))
+        else setTextColor(Color.BLACK)
+
         canvas.drawText(dateNumber.toString(), (width / 2).toFloat(), ((height + 15.0) / 2).toFloat(), paintText)
+    }
+
+    private fun setTextColor(color: Int){
+        paintText.color = color
     }
 }
