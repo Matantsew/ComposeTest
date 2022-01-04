@@ -14,45 +14,45 @@
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_1_d_1"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             android:visibility="invisible" />
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_1_d_2"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             android:visibility="invisible"/>
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_1_d_3"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             android:visibility="invisible" />
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_1_d_4"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             android:visibility="invisible" />
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_1_d_5"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             android:visibility="invisible" />
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_1_d_6"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             app:isWeekend="true"
             android:visibility="invisible" />
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_1_d_7"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             app:isWeekend="true"
             android:visibility="invisible" />
 
@@ -66,45 +66,45 @@
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_2_d_1"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             android:visibility="invisible"  />
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_2_d_2"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             android:visibility="invisible" />
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_2_d_3"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             android:visibility="invisible" />
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_2_d_4"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             android:visibility="invisible" />
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_2_d_5"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             android:visibility="invisible" />
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_2_d_6"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             app:isWeekend="true"
             android:visibility="invisible" />
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_2_d_7"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             app:isWeekend="true"
             android:visibility="invisible"  />
 
@@ -118,45 +118,45 @@
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_3_d_1"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             android:visibility="invisible" />
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_3_d_2"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             android:visibility="invisible" />
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_3_d_3"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             android:visibility="invisible" />
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_3_d_4"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             android:visibility="invisible" />
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_3_d_5"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             android:visibility="invisible" />
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_3_d_6"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             app:isWeekend="true"
             android:visibility="invisible" />
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_3_d_7"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             app:isWeekend="true"
             android:visibility="invisible" />
 
@@ -170,45 +170,45 @@
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_4_d_1"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             android:visibility="invisible"  />
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_4_d_2"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             android:visibility="invisible" />
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_4_d_3"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             android:visibility="invisible" />
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_4_d_4"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             android:visibility="invisible" />
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_4_d_5"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             android:visibility="invisible" />
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_4_d_6"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             app:isWeekend="true"
             android:visibility="invisible" />
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_4_d_7"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             app:isWeekend="true"
             android:visibility="invisible" />
 
@@ -222,45 +222,45 @@
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_5_d_1"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             android:visibility="invisible" />
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_5_d_2"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             android:visibility="invisible" />
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_5_d_3"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             android:visibility="invisible" />
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_5_d_4"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             android:visibility="invisible"  />
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_5_d_5"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             android:visibility="invisible" />
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_5_d_6"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             app:isWeekend="true"
             android:visibility="invisible"/>
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_5_d_7"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             app:isWeekend="true"
             android:visibility="invisible"/>
 
@@ -274,45 +274,45 @@
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_6_d_1"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             android:visibility="invisible"  />
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_6_d_2"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             android:visibility="invisible" />
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_6_d_3"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             android:visibility="invisible" />
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_6_d_4"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             android:visibility="invisible"  />
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_6_d_5"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             android:visibility="invisible" />
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_6_d_6"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             app:isWeekend="true"
             android:visibility="invisible" />
 
         <com.example.comptest.ui.CalendarSelectableDayButton
             android:id="@+id/w_6_d_7"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/custom_date_picker_button"
+            android:layout_height="@dimen/custom_date_picker_button"
             app:isWeekend="true"
             android:visibility="invisible"  />
 

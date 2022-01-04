@@ -6,4 +6,7 @@
         <attr name="dateNumber" format="integer" />
         <attr name="isWeekend" format="boolean" />
     </declare-styleable>
+    <declare-styleable name="CalendarNavigationButton">
+        <attr name="imageRef" format="reference" />
+    </declare-styleable>
 </resources>

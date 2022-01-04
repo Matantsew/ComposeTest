@@ -19,4 +19,6 @@
     <dimen name="h5">10dp</dimen>
     <dimen name="h6">9dp</dimen>
 
+    <dimen name="custom_date_picker_button">43dp</dimen>
+
 </resources>

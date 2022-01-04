@@ -6,12 +6,14 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Typeface
 import android.util.AttributeSet
+import android.view.View
 import com.example.comptest.R
+import kotlin.math.min
 
 class CalendarSelectableDayButton @JvmOverloads constructor(context: Context,
                                                             attrs: AttributeSet? = null,
                                                             defStyleAttr: Int = 0
-) : CalendarCircleButton(context, attrs, defStyleAttr){
+) : View(context, attrs, defStyleAttr){
 
     var actualDate: Boolean
     var dateSelected: Boolean
@@ -34,6 +36,16 @@ class CalendarSelectableDayButton @JvmOverloads constructor(context: Context,
         finally {
             attributes.recycle()
         }
+    }
+
+    // onSizeChanged(), onDraw(), invalidate()
+
+    var radius = 0.0f                   // Radius of the circle.
+
+    override fun onSizeChanged(width: Int, height: Int, oldWidth: Int, oldHeigth: Int) {
+        super.onSizeChanged(width, height, oldWidth, oldHeigth)
+
+        radius = (min(width, height) / 2.0 * 0.9).toFloat()
     }
 
     private var paintCircle = Paint(Paint.ANTI_ALIAS_FLAG).apply {
