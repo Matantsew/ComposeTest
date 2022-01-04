@@ -4,9 +4,12 @@ import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.DialogInterface
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.ViewPager2
 import com.example.comptest.databinding.DialogCustomDatePickerBinding
 import com.example.comptest.ui.MonthFragment
 import java.text.SimpleDateFormat
@@ -14,7 +17,7 @@ import java.util.*
 
 class CustomDatePickerDialog(private val fragmentActivity: FragmentActivity, private val listener: DatePickerDialog.OnDateSetListener?,
                              year: Int, month: Int, dayOfMonth: Int)
-    : AlertDialog(fragmentActivity), DialogInterface.OnClickListener{
+    : AlertDialog(fragmentActivity), View.OnClickListener{
 
     private var calendar: Calendar = Calendar.getInstance()
 
@@ -31,22 +34,50 @@ class CustomDatePickerDialog(private val fragmentActivity: FragmentActivity, pri
 
         binding.monthsViewPager.adapter = CalendarViewPagerAdapter(fragmentActivity, calendar, listener)
         binding.monthsViewPager.setCurrentItem(600, false)
+
+        binding.okButton.setOnClickListener(this)
+        binding.cancelButton.setOnClickListener(this)
+        binding.buttonNavLeft.setOnClickListener(this)
+        binding.buttonNavRight.setOnClickListener(this)
     }
 
-    override fun onClick(p0: DialogInterface?, p1: Int) {
-        TODO("Not yet implemented")
+    override fun onClick(v: View) {
+
+        val monthsViewPager = binding.monthsViewPager
+
+        when(v.id){
+            R.id.ok_button -> {
+                val adapter = (monthsViewPager.adapter as CalendarViewPagerAdapter)
+
+                val y = adapter.selectedYear
+                val m = adapter.selectedMonth
+                val d = adapter.selectedDayOfMonth
+
+                Log.i("DATE_SELECTED", "Year: $y, Month: $m, Day: $d")
+            }
+            R.id.cancel_button -> {
+                this.cancel()
+            }
+            R.id.button_nav_left -> {
+                monthsViewPager.setCurrentItem(monthsViewPager.currentItem-1, true)
+            }
+            R.id.button_nav_right -> {
+                monthsViewPager.setCurrentItem(monthsViewPager.currentItem+1, true)
+            }
+
+        }
     }
 
-    class CalendarViewPagerAdapter(private val fragmentActivity: FragmentActivity, private val calendar: Calendar, private val listener: DatePickerDialog.OnDateSetListener?)
+    class CalendarViewPagerAdapter(fragmentActivity: FragmentActivity, private val calendar: Calendar, private val listener: DatePickerDialog.OnDateSetListener?)
         : FragmentStateAdapter(fragmentActivity), OnDateChangeListener {
 
         private val MIDDLE_OF_ALL_MONTHS = 600
 
         private val actualDateCheckCalendar = Calendar.getInstance()
 
-        private var selectedYear = actualDateCheckCalendar.get(Calendar.YEAR)
-        private var selectedMonth = actualDateCheckCalendar.get(Calendar.MONTH)
-        private var selectedDayOfMonth = actualDateCheckCalendar.get(Calendar.DAY_OF_MONTH)
+        var selectedYear = actualDateCheckCalendar.get(Calendar.YEAR)
+        var selectedMonth = actualDateCheckCalendar.get(Calendar.MONTH)
+        var selectedDayOfMonth = actualDateCheckCalendar.get(Calendar.DAY_OF_MONTH)
 
         override fun getItemCount() = 12 * 100   // Count of all months
 

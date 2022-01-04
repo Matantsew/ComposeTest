@@ -62,13 +62,15 @@ class MonthFragment(private val dayOfWeekMonthStarts: Int, private val daysInMon
         else calendarSelectableDayButton.dateSelected = true
         calendarSelectableDayButton.invalidate()
 
-        val previousSelectedDayIdIndex = (dayOfWeekMonthStarts-1) + (selectedDay - 1)
-        val previousSelectedDay = binding.weeksLayout.findViewById<CalendarSelectableDayButton> (calendarDays[previousSelectedDayIdIndex])
+        if(selectedDay != 0) {
+            val previousSelectedDayIdIndex = (dayOfWeekMonthStarts - 1) + (selectedDay - 1)
+            val previousSelectedDay = binding.weeksLayout.findViewById<CalendarSelectableDayButton>(calendarDays[previousSelectedDayIdIndex])
 
-        previousSelectedDay.dateSelected = false
-        previousSelectedDay.invalidate()
+            previousSelectedDay.dateSelected = false
+            previousSelectedDay.invalidate()
+        }
+
         selectedDay = calendarSelectableDayButton.dateNumber
-
         onDateChangeListener?.onChangeDate(year, month, selectedDay)
     }
 }
