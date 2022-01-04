@@ -4,19 +4,17 @@ import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.DialogInterface
 import android.os.Bundle
-import android.widget.CalendarView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.comptest.databinding.DialogCustomDatePickerBinding
-import com.example.comptest.ui.CalendarSelectableDayButton
 import com.example.comptest.ui.MonthFragment
 import java.text.SimpleDateFormat
 import java.util.*
 
-class CustomDatePickerDialog(private val fragmentActivity: FragmentActivity, listener: DatePickerDialog.OnDateSetListener?,
+class CustomDatePickerDialog(private val fragmentActivity: FragmentActivity, private val listener: DatePickerDialog.OnDateSetListener?,
                              year: Int, month: Int, dayOfMonth: Int)
-    : AlertDialog(fragmentActivity), DialogInterface.OnClickListener, CalendarView.OnDateChangeListener{
+    : AlertDialog(fragmentActivity), DialogInterface.OnClickListener{
 
     private var calendar: Calendar = Calendar.getInstance()
 
@@ -31,7 +29,7 @@ class CustomDatePickerDialog(private val fragmentActivity: FragmentActivity, lis
         binding = DialogCustomDatePickerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.monthsViewPager.adapter = CalendarViewPagerAdapter(fragmentActivity, calendar)
+        binding.monthsViewPager.adapter = CalendarViewPagerAdapter(fragmentActivity, calendar, listener)
         binding.monthsViewPager.setCurrentItem(600, false)
     }
 
@@ -39,15 +37,8 @@ class CustomDatePickerDialog(private val fragmentActivity: FragmentActivity, lis
         TODO("Not yet implemented")
     }
 
-    override fun onSelectedDayChange(p0: CalendarView, p1: Int, p2: Int, p3: Int) {
-        TODO("Not yet implemented")
-    }
-
-    interface OnDateSetClickListener{
-        fun onDateSet(calendarSelectableDayButton: CalendarSelectableDayButton)
-    }
-
-    class CalendarViewPagerAdapter(fragmentActivity: FragmentActivity, private val calendar: Calendar) : FragmentStateAdapter(fragmentActivity) {
+    class CalendarViewPagerAdapter(private val fragmentActivity: FragmentActivity, private val calendar: Calendar, private val listener: DatePickerDialog.OnDateSetListener?)
+        : FragmentStateAdapter(fragmentActivity), OnDateChangeListener {
 
         private val MIDDLE_OF_ALL_MONTHS = 600
 
@@ -70,13 +61,24 @@ class CustomDatePickerDialog(private val fragmentActivity: FragmentActivity, lis
             val monthStartsAtDay = monthToShowCalendar.getFirstDayNameOfFirstWeek()
             val daysInMonth = monthToShowCalendar.getActualMaximum(Calendar.DAY_OF_MONTH)
 
-            val monthFragment = if (monthToShowCalendar.get(Calendar.YEAR) == actualDateCheckCalendar.get(Calendar.YEAR) &&
+            val monthFragment = if (monthToShowCalendar.get(Calendar.YEAR) == actualDateCheckCalendar.get(Calendar.YEAR) &&     // Today selection
                 monthToShowCalendar.get(Calendar.MONTH) == actualDateCheckCalendar.get(Calendar.MONTH)
                     ) MonthFragment(monthStartsAtDay, daysInMonth, today)
             else MonthFragment(monthStartsAtDay, daysInMonth)
 
-            if(selectedYear == monthToShowCalendar.get(Calendar.YEAR)
-                && selectedMonth == monthToShowCalendar.get(Calendar.MONTH))monthFragment.selectedDay = selectedDayOfMonth
+            if(selectedYear == monthToShowCalendar.get(Calendar.YEAR)                                   // User date selection
+                && selectedMonth == monthToShowCalendar.get(Calendar.MONTH)){
+                    monthFragment.year = monthToShowCalendar.get(Calendar.YEAR)
+                    monthFragment.month = monthToShowCalendar.get(Calendar.MONTH)
+                    monthFragment.selectedDay = selectedDayOfMonth
+            }
+            else {
+                monthFragment.year = monthToShowCalendar.get(Calendar.YEAR)
+                monthFragment.month = monthToShowCalendar.get(Calendar.MONTH)
+                monthFragment.selectedDay = 0
+            }
+
+            monthFragment.setOnDateChangeListener(this)
 
             return monthFragment
         }
@@ -114,6 +116,12 @@ class CustomDatePickerDialog(private val fragmentActivity: FragmentActivity, lis
             setMonthCalendar.set(year, month, day)
 
             return setMonthCalendar
+        }
+
+        override fun onChangeDate(changedYear: Int, changedMonth: Int, changedDayOfMonth: Int) {
+            selectedYear = changedYear
+            selectedMonth = changedMonth
+            selectedDayOfMonth = changedDayOfMonth
         }
     }
 }

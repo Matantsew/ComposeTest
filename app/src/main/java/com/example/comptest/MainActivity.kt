@@ -2,6 +2,7 @@ package com.example.comptest
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.DatePicker
 import androidx.compose.foundation.layout.*
@@ -28,7 +29,7 @@ class MainActivity : FragmentActivity(), DatePickerDialog.OnDateSetListener{
             val calendar = Calendar.getInstance()
             val dialog = CustomDatePickerDialog(
                 this,
-                null,
+                this,
                 calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
                 calendar.get(Calendar.DAY_OF_MONTH))
@@ -101,7 +102,7 @@ class MainActivity : FragmentActivity(), DatePickerDialog.OnDateSetListener{
         }
     }
 
-    override fun onDateSet(p0: DatePicker?, p1: Int, p2: Int, p3: Int) {
-        TODO("Not yet implemented")
+    override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
+        Log.i("DATE_SET", "Year: $year, month: $month, dayOfMonth: $dayOfMonth")
     }
 }

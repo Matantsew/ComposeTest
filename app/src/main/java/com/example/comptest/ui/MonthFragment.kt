@@ -5,16 +5,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.comptest.CustomDatePickerDialog
+import com.example.comptest.OnDateChangeListener
 import com.example.comptest.R
 import com.example.comptest.databinding.WeeksViewBinding
 
 class MonthFragment(private val dayOfWeekMonthStarts: Int, private val daysInMonthCount: Int, private val todayDayNumber: Int? = null)
-    : Fragment(), CustomDatePickerDialog.OnDateSetClickListener{
+    : Fragment(), CalendarSelectableDayButton.OnDaySelectListener {
 
     private lateinit var binding: WeeksViewBinding
 
+    var year: Int = 0
+    var month: Int = 0
+
     var selectedDay: Int = 0
+
+    private var onDateChangeListener: OnDateChangeListener? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
@@ -33,8 +38,12 @@ class MonthFragment(private val dayOfWeekMonthStarts: Int, private val daysInMon
             if(it + 1 == todayDayNumber)calendarDay.actualDate = true
             if(it + 1 == selectedDay)calendarDay.dateSelected = true
 
-            calendarDay.setOnDateSetListener(this)
+            calendarDay.setOnDaySelectListener(this)
         }
+    }
+
+    fun setOnDateChangeListener(onDateChangeListener: OnDateChangeListener){
+        this.onDateChangeListener = onDateChangeListener
     }
 
     private companion object{
@@ -48,7 +57,7 @@ class MonthFragment(private val dayOfWeekMonthStarts: Int, private val daysInMon
         )
     }
 
-    override fun onDateSet(calendarSelectableDayButton: CalendarSelectableDayButton) {
+    override fun onDaySelect(calendarSelectableDayButton: CalendarSelectableDayButton) {
         if(calendarSelectableDayButton.dateSelected) return
         else calendarSelectableDayButton.dateSelected = true
         calendarSelectableDayButton.invalidate()
@@ -59,5 +68,7 @@ class MonthFragment(private val dayOfWeekMonthStarts: Int, private val daysInMon
         previousSelectedDay.dateSelected = false
         previousSelectedDay.invalidate()
         selectedDay = calendarSelectableDayButton.dateNumber
+
+        onDateChangeListener?.onChangeDate(year, month, selectedDay)
     }
 }

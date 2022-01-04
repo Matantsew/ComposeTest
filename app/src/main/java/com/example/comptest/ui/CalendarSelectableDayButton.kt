@@ -6,7 +6,6 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Typeface
 import android.util.AttributeSet
-import com.example.comptest.CustomDatePickerDialog
 import com.example.comptest.R
 
 class CalendarSelectableDayButton @JvmOverloads constructor(context: Context,
@@ -19,7 +18,7 @@ class CalendarSelectableDayButton @JvmOverloads constructor(context: Context,
     var isWeekend: Boolean
     var dateNumber: Int
 
-    private var onDateSetClickListener: CustomDatePickerDialog.OnDateSetClickListener? = null
+    private var onDaySelectListener: OnDaySelectListener? = null
 
     init{
         isClickable = true
@@ -49,14 +48,14 @@ class CalendarSelectableDayButton @JvmOverloads constructor(context: Context,
         typeface = Typeface.create( "", Typeface.NORMAL)
     }
 
-    fun setOnDateSetListener(onDateSetClickListener: CustomDatePickerDialog.OnDateSetClickListener){
-        this.onDateSetClickListener = onDateSetClickListener
+    fun setOnDaySelectListener(onDaySelectListener: OnDaySelectListener){
+        this.onDaySelectListener = onDaySelectListener
     }
 
     override fun performClick(): Boolean {
         if(super.performClick())return true
 
-        onDateSetClickListener?.onDateSet(this)
+        onDaySelectListener?.onDaySelect(this)
 
         return true
     }
@@ -64,24 +63,36 @@ class CalendarSelectableDayButton @JvmOverloads constructor(context: Context,
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        if(actualDate) {
-            paintCircle.style = Paint.Style.STROKE
-            canvas.drawCircle(((width - 2.5) / 2).toFloat(), (height / 2).toFloat(), radius, paintCircle)
-        }
+        if(actualDate || dateSelected) {
 
-        if(dateSelected){
-            paintCircle.style = Paint.Style.FILL
-            canvas.drawCircle(((width - 2.5) / 2).toFloat(), (height / 2).toFloat(), radius, paintCircle)
+            if(actualDate)paintCircle.style = Paint.Style.STROKE
+
+            if(dateSelected)paintCircle.style = Paint.Style.FILL
+
+            canvas.drawCircle(
+                ((width ) / 2).toFloat(),
+                ((height ) / 2).toFloat(),
+                radius,
+                paintCircle
+            )
         }
 
         if(isWeekend && dateSelected)setTextColor(Color.BLACK)
         else if(isWeekend) setTextColor(resources.getColor(R.color.colorAccent, resources.newTheme()))
         else setTextColor(Color.BLACK)
 
-        canvas.drawText(dateNumber.toString(), (width / 2).toFloat(), ((height + 15.0) / 2).toFloat(), paintText)
+        canvas.drawText(
+            dateNumber.toString(),
+            (width / 2).toFloat(),
+            ((height + 17) / 2).toFloat(),
+            paintText)
     }
 
     private fun setTextColor(color: Int){
         paintText.color = color
+    }
+
+    interface OnDaySelectListener {
+        fun onDaySelect(calendarSelectableDayButton: CalendarSelectableDayButton)
     }
 }
