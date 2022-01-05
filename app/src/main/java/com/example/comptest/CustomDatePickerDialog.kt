@@ -2,16 +2,15 @@ package com.example.comptest
 
 import android.app.AlertDialog
 import android.app.DatePickerDialog
-import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import androidx.viewpager2.widget.ViewPager2
 import com.example.comptest.databinding.DialogCustomDatePickerBinding
 import com.example.comptest.ui.MonthFragment
+import com.example.comptest.ui.MonthFragment.Companion.getNameOfMonth
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -32,7 +31,7 @@ class CustomDatePickerDialog(private val fragmentActivity: FragmentActivity, pri
         binding = DialogCustomDatePickerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.monthsViewPager.adapter = CalendarViewPagerAdapter(fragmentActivity, calendar, listener)
+        binding.monthsViewPager.adapter = CalendarViewPagerAdapter(fragmentActivity, calendar, listener, binding)
         binding.monthsViewPager.setCurrentItem(600, false)
 
         binding.okButton.setOnClickListener(this)
@@ -68,7 +67,7 @@ class CustomDatePickerDialog(private val fragmentActivity: FragmentActivity, pri
         }
     }
 
-    class CalendarViewPagerAdapter(fragmentActivity: FragmentActivity, private val calendar: Calendar, private val listener: DatePickerDialog.OnDateSetListener?)
+    class CalendarViewPagerAdapter(fragmentActivity: FragmentActivity, private val calendar: Calendar, private val listener: DatePickerDialog.OnDateSetListener?, private val dialogCustomDatePickerBinding: DialogCustomDatePickerBinding)
         : FragmentStateAdapter(fragmentActivity), OnDateChangeListener {
 
         private val MIDDLE_OF_ALL_MONTHS = 600
@@ -151,10 +150,13 @@ class CustomDatePickerDialog(private val fragmentActivity: FragmentActivity, pri
             return setMonthCalendar
         }
 
-        override fun onChangeDate(fragmentWhereDateSelected: MonthFragment, changedYear: Int, changedMonth: Int, changedDayOfMonth: Int) {
+        override fun onChangeDate(fragmentWhereDateSelected: MonthFragment, changedYear: Int, changedMonth: Int, changedDayOfMonth: Int, selectedDayName: String) {
             selectedYear = changedYear
             selectedMonth = changedMonth
             selectedDayOfMonth = changedDayOfMonth
+
+            dialogCustomDatePickerBinding.textViewSelectedMonthYear.text = (getNameOfMonth(selectedMonth) + ", " + selectedYear)
+            dialogCustomDatePickerBinding.selectedDayNameDateTextView.text = ("$selectedDayName, $selectedDayOfMonth")
 
             if(this.fragmentWhereDateSelected != fragmentWhereDateSelected) {
                 this.fragmentWhereDateSelected?.invalidatePreviousSelectedDayButton()

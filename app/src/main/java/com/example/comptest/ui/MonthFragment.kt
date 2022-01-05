@@ -38,7 +38,8 @@ class MonthFragment(private val dayOfWeekMonthStarts: Int, private val daysInMon
             if(it + 1 == todayDayNumber)calendarDay.actualDate = true
             if(it + 1 == selectedDay){
                 calendarDay.dateSelected = true
-                onDateChangeListener?.onChangeDate(this, year, month, selectedDay)
+                val selectedDayName = getNameOfDay(dayOfWeekMonthStarts + selectedDay-1)
+                onDateChangeListener?.onChangeDate(this, year, month, selectedDay, selectedDayName)
             }
 
             calendarDay.setOnDaySelectListener(this)
@@ -49,7 +50,7 @@ class MonthFragment(private val dayOfWeekMonthStarts: Int, private val daysInMon
         this.onDateChangeListener = onDateChangeListener
     }
 
-    private companion object{
+    companion object{
         private val calendarDays = arrayOf(
             R.id.w_1_d_1, R.id.w_1_d_2, R.id.w_1_d_3, R.id.w_1_d_4, R.id.w_1_d_5, R.id.w_1_d_6, R.id.w_1_d_7,
             R.id.w_2_d_1, R.id.w_2_d_2, R.id.w_2_d_3, R.id.w_2_d_4, R.id.w_2_d_5, R.id.w_2_d_6, R.id.w_2_d_7,
@@ -58,6 +59,39 @@ class MonthFragment(private val dayOfWeekMonthStarts: Int, private val daysInMon
             R.id.w_5_d_1, R.id.w_5_d_2, R.id.w_5_d_3, R.id.w_5_d_4, R.id.w_5_d_5, R.id.w_5_d_6, R.id.w_5_d_7,
             R.id.w_6_d_1, R.id.w_6_d_2, R.id.w_6_d_3, R.id.w_6_d_4, R.id.w_6_d_5, R.id.w_6_d_6, R.id.w_6_d_7
         )
+
+        fun getNameOfMonth(index: Int): String {
+
+            return when(index){
+                0 -> "Januar"
+                1 -> "Februar"
+                2 -> "Marz"
+                3 -> "April"
+                4 -> "Mai"
+                5 -> "Juni"
+                6 -> "Juli"
+                7 -> "August"
+                8 -> "September"
+                9 -> "Oktober"
+                10 -> "November"
+                11 -> "Dezember"
+                else -> {""}
+            }
+        }
+
+        fun getNameOfDay(index: Int): String {
+
+            return when(index){
+                1,8,15,22,29,36 -> "Montag"
+                2,9,16,23,30,37 -> "Dienstag"
+                3,10,17,24,31,38 -> "Mittwoch"
+                4,11,18,25,32,39 -> "Donnerstag"
+                5,12,19,26,33 -> "Freitag"
+                6,13,20,27,34 -> "Samstag"
+                7,14,21,28,35 -> "Sonntag"
+                else -> {""}
+            }
+        }
     }
 
     fun invalidatePreviousSelectedDayButton(){
@@ -78,6 +112,7 @@ class MonthFragment(private val dayOfWeekMonthStarts: Int, private val daysInMon
         invalidatePreviousSelectedDayButton()
 
         selectedDay = calendarSelectableDayButton.dateNumber
-        onDateChangeListener?.onChangeDate(this, year, month, selectedDay)
+        val selectedDayName = getNameOfDay(dayOfWeekMonthStarts + selectedDay-1)
+        onDateChangeListener?.onChangeDate(this, year, month, selectedDay, selectedDayName)
     }
 }
