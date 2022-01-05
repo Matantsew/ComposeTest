@@ -36,7 +36,10 @@ class MonthFragment(private val dayOfWeekMonthStarts: Int, private val daysInMon
             calendarDay.visibility = View.VISIBLE
             calendarDay.dateNumber = it + 1
             if(it + 1 == todayDayNumber)calendarDay.actualDate = true
-            if(it + 1 == selectedDay)calendarDay.dateSelected = true
+            if(it + 1 == selectedDay){
+                calendarDay.dateSelected = true
+                onDateChangeListener?.onChangeDate(this, year, month, selectedDay)
+            }
 
             calendarDay.setOnDaySelectListener(this)
         }
@@ -57,11 +60,7 @@ class MonthFragment(private val dayOfWeekMonthStarts: Int, private val daysInMon
         )
     }
 
-    override fun onDaySelect(calendarSelectableDayButton: CalendarSelectableDayButton) {
-        if(calendarSelectableDayButton.dateSelected) return
-        else calendarSelectableDayButton.dateSelected = true
-        calendarSelectableDayButton.invalidate()
-
+    fun invalidatePreviousSelectedDayButton(){
         if(selectedDay != 0) {
             val previousSelectedDayIdIndex = (dayOfWeekMonthStarts - 1) + (selectedDay - 1)
             val previousSelectedDay = binding.weeksLayout.findViewById<CalendarSelectableDayButton>(calendarDays[previousSelectedDayIdIndex])
@@ -69,8 +68,16 @@ class MonthFragment(private val dayOfWeekMonthStarts: Int, private val daysInMon
             previousSelectedDay.dateSelected = false
             previousSelectedDay.invalidate()
         }
+    }
+
+    override fun onDaySelect(calendarSelectableDayButton: CalendarSelectableDayButton) {
+        if(calendarSelectableDayButton.dateSelected) return
+        else calendarSelectableDayButton.dateSelected = true
+        calendarSelectableDayButton.invalidate()
+
+        invalidatePreviousSelectedDayButton()
 
         selectedDay = calendarSelectableDayButton.dateNumber
-        onDateChangeListener?.onChangeDate(year, month, selectedDay)
+        onDateChangeListener?.onChangeDate(this, year, month, selectedDay)
     }
 }

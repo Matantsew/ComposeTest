@@ -75,6 +75,8 @@ class CustomDatePickerDialog(private val fragmentActivity: FragmentActivity, pri
 
         private val actualDateCheckCalendar = Calendar.getInstance()
 
+        private var fragmentWhereDateSelected: MonthFragment? = null
+
         var selectedYear = actualDateCheckCalendar.get(Calendar.YEAR)
         var selectedMonth = actualDateCheckCalendar.get(Calendar.MONTH)
         var selectedDayOfMonth = actualDateCheckCalendar.get(Calendar.DAY_OF_MONTH)
@@ -149,10 +151,15 @@ class CustomDatePickerDialog(private val fragmentActivity: FragmentActivity, pri
             return setMonthCalendar
         }
 
-        override fun onChangeDate(changedYear: Int, changedMonth: Int, changedDayOfMonth: Int) {
+        override fun onChangeDate(fragmentWhereDateSelected: MonthFragment, changedYear: Int, changedMonth: Int, changedDayOfMonth: Int) {
             selectedYear = changedYear
             selectedMonth = changedMonth
             selectedDayOfMonth = changedDayOfMonth
+
+            if(this.fragmentWhereDateSelected != fragmentWhereDateSelected) {
+                this.fragmentWhereDateSelected?.invalidatePreviousSelectedDayButton()
+                this.fragmentWhereDateSelected = fragmentWhereDateSelected
+            }
         }
     }
 }
