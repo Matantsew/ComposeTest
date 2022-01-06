@@ -3,8 +3,9 @@
     <declare-styleable name="CalendarSelectableDayButton">
         <attr name="actualDate" format="boolean" />
         <attr name="dateSelected" format="boolean" />
-        <attr name="dateNumber" format="integer" />
         <attr name="isWeekend" format="boolean" />
+        <attr name="active" format="boolean" />
+        <attr name="dateNumber" format="integer" />
     </declare-styleable>
     <declare-styleable name="CalendarNavigationButton">
         <attr name="imageRef" format="reference" />

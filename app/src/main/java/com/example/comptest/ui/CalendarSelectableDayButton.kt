@@ -18,24 +18,27 @@ class CalendarSelectableDayButton @JvmOverloads constructor(context: Context,
     var actualDate: Boolean
     var dateSelected: Boolean
     var isWeekend: Boolean
+    var active: Boolean
     var dateNumber: Int
 
     private var onDaySelectListener: OnDaySelectListener? = null
 
     init{
-        isClickable = true
 
         val attributes = context.obtainStyledAttributes(attrs, R.styleable.CalendarSelectableDayButton)
 
         try {
             actualDate = attributes.getBoolean(R.styleable.CalendarSelectableDayButton_actualDate, false)
             dateSelected = attributes.getBoolean(R.styleable.CalendarSelectableDayButton_dateSelected, false)
-            dateNumber = attributes.getInt(R.styleable.CalendarSelectableDayButton_dateNumber, 0)
             isWeekend = attributes.getBoolean(R.styleable.CalendarSelectableDayButton_isWeekend, false)
+            active = attributes.getBoolean(R.styleable.CalendarSelectableDayButton_active, true)
+            dateNumber = attributes.getInt(R.styleable.CalendarSelectableDayButton_dateNumber, 0)
         }
         finally {
             attributes.recycle()
         }
+
+        isClickable = active
     }
 
     // onSizeChanged(), onDraw(), invalidate()
@@ -92,6 +95,8 @@ class CalendarSelectableDayButton @JvmOverloads constructor(context: Context,
         if(isWeekend && dateSelected)setTextColor(Color.BLACK)
         else if(isWeekend) setTextColor(resources.getColor(R.color.colorAccent, resources.newTheme()))
         else setTextColor(Color.BLACK)
+
+        if(!active)paintText.alpha = 330
 
         canvas.drawText(
             dateNumber.toString(),

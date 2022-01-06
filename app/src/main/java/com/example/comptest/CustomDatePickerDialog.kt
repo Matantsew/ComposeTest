@@ -20,6 +20,10 @@ class CustomDatePickerDialog(private val fragmentActivity: FragmentActivity, pri
 
     private var calendar: Calendar = Calendar.getInstance()
 
+    var minDate: Long? = null
+
+    private var minDateCalendar: Calendar? = null
+
     private lateinit var binding: DialogCustomDatePickerBinding
 
     init {
@@ -31,13 +35,31 @@ class CustomDatePickerDialog(private val fragmentActivity: FragmentActivity, pri
         binding = DialogCustomDatePickerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.monthsViewPager.adapter = CalendarViewPagerAdapter(fragmentActivity, calendar, listener, binding)
-        binding.monthsViewPager.setCurrentItem(600, false) // TODO: add minDate attribute
+        val indexItem = if(minDate != null){
+            minDateCalendar = Calendar.getInstance()
+            minDateCalendar?.timeInMillis = minDate as Long
+
+            countMonthsDiffMinDateForScroll()
+        } else 600  // Middle of all (1200) items
+
+        binding.monthsViewPager.adapter = CalendarViewPagerAdapter(fragmentActivity, calendar, listener, binding, indexItem)
+        binding.monthsViewPager.setCurrentItem(indexItem, false)
 
         binding.okButton.setOnClickListener(this)
         binding.cancelButton.setOnClickListener(this)
         binding.buttonNavLeft.setOnClickListener(this)
         binding.buttonNavRight.setOnClickListener(this)
+    }
+
+    private fun countMonthsDiffMinDateForScroll(): Int{
+
+        val nowYear: Int = calendar.get(Calendar.YEAR)
+        val nowMonth: Int = calendar.get(Calendar.MONTH)
+
+        val minDateYear: Int? = minDateCalendar?.get(Calendar.YEAR)
+        val minDateMonth: Int? = minDateCalendar?.get(Calendar.MONTH)
+
+        return (nowYear - (minDateYear ?: nowYear)) * 12 + (nowMonth - (minDateMonth ?: nowMonth))
     }
 
     override fun onClick(v: View) {
@@ -67,10 +89,12 @@ class CustomDatePickerDialog(private val fragmentActivity: FragmentActivity, pri
         }
     }
 
-    class CalendarViewPagerAdapter(fragmentActivity: FragmentActivity, private val calendar: Calendar, private val listener: DatePickerDialog.OnDateSetListener?, private val dialogCustomDatePickerBinding: DialogCustomDatePickerBinding)
+    class CalendarViewPagerAdapter(fragmentActivity: FragmentActivity,
+                                   private val calendar: Calendar,
+                                   private val listener: DatePickerDialog.OnDateSetListener?,
+                                   private val dialogCustomDatePickerBinding: DialogCustomDatePickerBinding,
+                                   private val indexMainItem: Int)
         : FragmentStateAdapter(fragmentActivity), MonthFragment.OnDateChangeListener {
-
-        private val MIDDLE_OF_ALL_MONTHS = 600
 
         private val actualDateCheckCalendar = Calendar.getInstance()
 
@@ -84,7 +108,7 @@ class CustomDatePickerDialog(private val fragmentActivity: FragmentActivity, pri
 
         override fun createFragment(position: Int): Fragment {
 
-            val scrolledToPosition = MIDDLE_OF_ALL_MONTHS - position
+            val scrolledToPosition = indexMainItem - position
 
             val monthToShowCalendar = setMonth(scrolledToPosition)
 
