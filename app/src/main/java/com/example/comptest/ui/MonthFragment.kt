@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.comptest.OnDateChangeListener
 import com.example.comptest.R
 import com.example.comptest.databinding.WeeksViewBinding
 
@@ -39,7 +38,8 @@ class MonthFragment(private val dayOfWeekMonthStarts: Int, private val daysInMon
             if(it + 1 == selectedDay){
                 calendarDay.dateSelected = true
                 val selectedDayName = getNameOfDay(dayOfWeekMonthStarts + selectedDay-1)
-                onDateChangeListener?.onChangeDate(this, year, month, selectedDay, selectedDayName)
+                onDateChangeListener?.onChangeDate(year, month, selectedDay, selectedDayName)
+                onDateChangeListener?.onExchangeDateFragments(this)
             }
 
             calendarDay.setOnDaySelectListener(this)
@@ -113,6 +113,14 @@ class MonthFragment(private val dayOfWeekMonthStarts: Int, private val daysInMon
 
         selectedDay = calendarSelectableDayButton.dateNumber
         val selectedDayName = getNameOfDay(dayOfWeekMonthStarts + selectedDay-1)
-        onDateChangeListener?.onChangeDate(this, year, month, selectedDay, selectedDayName)
+        onDateChangeListener?.onChangeDate(year, month, selectedDay, selectedDayName)
+        onDateChangeListener?.onExchangeDateFragments(this)
+    }
+
+    interface OnDateChangeListener {
+
+        fun onChangeDate(changedYear: Int, changedMonth: Int, changedDayOfMonth: Int, selectedDayName: String)
+
+        fun onExchangeDateFragments(fragmentWhereDateSelected: MonthFragment)
     }
 }

@@ -32,7 +32,7 @@ class CustomDatePickerDialog(private val fragmentActivity: FragmentActivity, pri
         setContentView(binding.root)
 
         binding.monthsViewPager.adapter = CalendarViewPagerAdapter(fragmentActivity, calendar, listener, binding)
-        binding.monthsViewPager.setCurrentItem(600, false)
+        binding.monthsViewPager.setCurrentItem(600, false) // TODO: add minDate attribute
 
         binding.okButton.setOnClickListener(this)
         binding.cancelButton.setOnClickListener(this)
@@ -68,7 +68,7 @@ class CustomDatePickerDialog(private val fragmentActivity: FragmentActivity, pri
     }
 
     class CalendarViewPagerAdapter(fragmentActivity: FragmentActivity, private val calendar: Calendar, private val listener: DatePickerDialog.OnDateSetListener?, private val dialogCustomDatePickerBinding: DialogCustomDatePickerBinding)
-        : FragmentStateAdapter(fragmentActivity), OnDateChangeListener {
+        : FragmentStateAdapter(fragmentActivity), MonthFragment.OnDateChangeListener {
 
         private val MIDDLE_OF_ALL_MONTHS = 600
 
@@ -150,13 +150,16 @@ class CustomDatePickerDialog(private val fragmentActivity: FragmentActivity, pri
             return setMonthCalendar
         }
 
-        override fun onChangeDate(fragmentWhereDateSelected: MonthFragment, changedYear: Int, changedMonth: Int, changedDayOfMonth: Int, selectedDayName: String) {
+        override fun onChangeDate(changedYear: Int, changedMonth: Int, changedDayOfMonth: Int, selectedDayName: String) {
             selectedYear = changedYear
             selectedMonth = changedMonth
             selectedDayOfMonth = changedDayOfMonth
 
             dialogCustomDatePickerBinding.textViewSelectedMonthYear.text = (getNameOfMonth(selectedMonth) + ", " + selectedYear)
             dialogCustomDatePickerBinding.selectedDayNameDateTextView.text = ("$selectedDayName, $selectedDayOfMonth")
+        }
+
+        override fun onExchangeDateFragments(fragmentWhereDateSelected: MonthFragment) {
 
             if(this.fragmentWhereDateSelected != fragmentWhereDateSelected) {
                 this.fragmentWhereDateSelected?.invalidatePreviousSelectedDayButton()
