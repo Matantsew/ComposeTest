@@ -95,7 +95,9 @@ class CustomDatePickerDialog(private val fragmentActivity: FragmentActivity, pri
                                    private val listener: DatePickerDialog.OnDateSetListener?,
                                    private val dialogCustomDatePickerBinding: DialogCustomDatePickerBinding,
                                    private val indexMainItem: Int)
-        : FragmentStateAdapter(fragmentActivity), MonthFragment.OnDateChangeListener {
+        : FragmentStateAdapter(fragmentActivity),
+        MonthFragment.OnDateChangeListener,
+        MonthFragment.OnActualMonthSetListener {
 
         private val actualDateCheckCalendar = Calendar.getInstance()
 
@@ -142,6 +144,7 @@ class CustomDatePickerDialog(private val fragmentActivity: FragmentActivity, pri
             }
 
             monthFragment.setOnDateChangeListener(this)
+            monthFragment.setOnActualMonthSetListener(this)
 
             return monthFragment
         }
@@ -196,6 +199,12 @@ class CustomDatePickerDialog(private val fragmentActivity: FragmentActivity, pri
                 this.fragmentWhereDateSelected?.invalidatePreviousSelectedDayButton()
                 this.fragmentWhereDateSelected = fragmentWhereDateSelected
             }
+        }
+
+        override fun onSetActualMonth(monthNum: Int, year: Int) {
+
+            val actualMonthYearText = getNameOfMonth(monthNum) + ", $year"
+            dialogCustomDatePickerBinding.textViewMonthYear.text = actualMonthYearText
         }
     }
 }

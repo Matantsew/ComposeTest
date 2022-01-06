@@ -6,15 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.comptest.R
-import com.example.comptest.databinding.WeeksViewBinding
+import com.example.comptest.databinding.MonthViewBinding
 
 class MonthFragment(private val dayOfWeekMonthStarts: Int, private val daysInMonthCount: Int, private val todayDayNumber: Int? = null)
     : Fragment(), CalendarSelectableDayButton.OnDaySelectListener {
 
-    private lateinit var binding: WeeksViewBinding
+    private lateinit var binding: MonthViewBinding
 
-    var year: Int = 0
+    private lateinit var onActualMonthSetListener: OnActualMonthSetListener
+
     var month: Int = 0
+    var year: Int = 0
 
     var selectedDay: Int = 0
 
@@ -24,11 +26,17 @@ class MonthFragment(private val dayOfWeekMonthStarts: Int, private val daysInMon
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
-        binding = WeeksViewBinding.inflate(layoutInflater)
+        binding = MonthViewBinding.inflate(layoutInflater)
 
         renderWeeks()
 
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        onActualMonthSetListener.onSetActualMonth(month, year)
     }
 
     private fun renderWeeks(){
@@ -49,6 +57,10 @@ class MonthFragment(private val dayOfWeekMonthStarts: Int, private val daysInMon
 
             calendarDay.setOnDaySelectListener(this)
         }
+    }
+
+    fun setOnActualMonthSetListener(onActualMonthSetListener: OnActualMonthSetListener){
+        this.onActualMonthSetListener = onActualMonthSetListener
     }
 
     fun setOnDateChangeListener(onDateChangeListener: OnDateChangeListener){
@@ -127,5 +139,9 @@ class MonthFragment(private val dayOfWeekMonthStarts: Int, private val daysInMon
         fun onChangeDate(changedYear: Int, changedMonth: Int, changedDayOfMonth: Int, selectedDayName: String)
 
         fun onExchangeDateFragments(fragmentWhereDateSelected: MonthFragment)
+    }
+
+    interface OnActualMonthSetListener{
+        fun onSetActualMonth(monthNum: Int, year: Int)
     }
 }
