@@ -18,6 +18,8 @@ class MonthFragment(private val dayOfWeekMonthStarts: Int, private val daysInMon
 
     var selectedDay: Int = 0
 
+    var minDateDay: Int = 0
+
     private var onDateChangeListener: OnDateChangeListener? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -32,8 +34,11 @@ class MonthFragment(private val dayOfWeekMonthStarts: Int, private val daysInMon
     private fun renderWeeks(){
         (0 until daysInMonthCount).forEach{
             val calendarDay = binding.weeksLayout.findViewById<CalendarSelectableDayButton> (calendarDays[dayOfWeekMonthStarts-1 + it])
+
             calendarDay.visibility = View.VISIBLE
             calendarDay.dateNumber = it + 1
+
+            if(it + 1 < minDateDay)calendarDay.active = false
             if(it + 1 == todayDayNumber)calendarDay.actualDate = true
             if(it + 1 == selectedDay){
                 calendarDay.dateSelected = true

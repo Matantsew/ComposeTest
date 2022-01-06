@@ -18,7 +18,13 @@ class CalendarSelectableDayButton @JvmOverloads constructor(context: Context,
     var actualDate: Boolean
     var dateSelected: Boolean
     var isWeekend: Boolean
-    var active: Boolean
+
+    var active: Boolean = true
+        set(value) {
+        isClickable = value
+            field = value
+        }
+
     var dateNumber: Int
 
     private var onDaySelectListener: OnDaySelectListener? = null
@@ -37,8 +43,6 @@ class CalendarSelectableDayButton @JvmOverloads constructor(context: Context,
         finally {
             attributes.recycle()
         }
-
-        isClickable = active
     }
 
     // onSizeChanged(), onDraw(), invalidate()

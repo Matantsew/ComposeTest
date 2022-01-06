@@ -42,7 +42,7 @@ class CustomDatePickerDialog(private val fragmentActivity: FragmentActivity, pri
             countMonthsDiffMinDateForScroll()
         } else 600  // Middle of all (1200) items
 
-        binding.monthsViewPager.adapter = CalendarViewPagerAdapter(fragmentActivity, calendar, listener, binding, indexItem)
+        binding.monthsViewPager.adapter = CalendarViewPagerAdapter(fragmentActivity, calendar, minDateCalendar, listener, binding, indexItem)
         binding.monthsViewPager.setCurrentItem(indexItem, false)
 
         binding.okButton.setOnClickListener(this)
@@ -91,6 +91,7 @@ class CustomDatePickerDialog(private val fragmentActivity: FragmentActivity, pri
 
     class CalendarViewPagerAdapter(fragmentActivity: FragmentActivity,
                                    private val calendar: Calendar,
+                                   private val minDateCalendar: Calendar? = null,
                                    private val listener: DatePickerDialog.OnDateSetListener?,
                                    private val dialogCustomDatePickerBinding: DialogCustomDatePickerBinding,
                                    private val indexMainItem: Int)
@@ -122,8 +123,14 @@ class CustomDatePickerDialog(private val fragmentActivity: FragmentActivity, pri
                     ) MonthFragment(monthStartsAtDay, daysInMonth, today)
             else MonthFragment(monthStartsAtDay, daysInMonth)
 
+            if(minDateCalendar?.get(Calendar.YEAR) == monthToShowCalendar.get(Calendar.YEAR)                                   // User date selection
+                && minDateCalendar.get(Calendar.MONTH) == monthToShowCalendar.get(Calendar.MONTH)){
+                monthFragment.minDateDay = minDateCalendar.get(Calendar.DAY_OF_MONTH)
+            }
+
             if(selectedYear == monthToShowCalendar.get(Calendar.YEAR)                                   // User date selection
                 && selectedMonth == monthToShowCalendar.get(Calendar.MONTH)){
+
                     monthFragment.year = monthToShowCalendar.get(Calendar.YEAR)
                     monthFragment.month = monthToShowCalendar.get(Calendar.MONTH)
                     monthFragment.selectedDay = selectedDayOfMonth

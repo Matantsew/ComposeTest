@@ -44,7 +44,7 @@ class MainActivity : FragmentActivity(), DatePickerDialog.OnDateSetListener{
 
 
             val minDateCalendar = Calendar.getInstance()
-            minDateCalendar.set(2021, 11, 5)
+            minDateCalendar.set(2022, 0, 1)
 
             dialog.minDate = calendar.timeInMillis
             dialog.show()
