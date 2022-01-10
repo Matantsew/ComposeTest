@@ -3,7 +3,6 @@ package com.example.comptest
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -42,7 +41,7 @@ class CustomDatePickerDialog(private val fragmentActivity: FragmentActivity, pri
             countMonthsDiffMinDateForScroll()
         } else 600  // Middle of all (1200) items
 
-        binding.monthsViewPager.adapter = CalendarViewPagerAdapter(fragmentActivity, calendar, minDateCalendar, listener, binding, indexItem)
+        binding.monthsViewPager.adapter = CalendarViewPagerAdapter(fragmentActivity, calendar, minDateCalendar, binding, indexItem)
         binding.monthsViewPager.setCurrentItem(indexItem, false)
 
         binding.okButton.setOnClickListener(this)
@@ -70,11 +69,12 @@ class CustomDatePickerDialog(private val fragmentActivity: FragmentActivity, pri
             R.id.ok_button -> {
                 val adapter = (monthsViewPager.adapter as CalendarViewPagerAdapter)
 
-                val y = adapter.selectedYear
-                val m = adapter.selectedMonth
-                val d = adapter.selectedDayOfMonth
+                val year = adapter.selectedYear
+                val month = adapter.selectedMonth
+                val day = adapter.selectedDayOfMonth
 
-                Log.i("DATE_SELECTED", "Year: $y, Month: $m, Day: $d")
+                listener?.onDateSet(null, year, month, day)
+                this.cancel()
             }
             R.id.cancel_button -> {
                 this.cancel()
@@ -92,7 +92,6 @@ class CustomDatePickerDialog(private val fragmentActivity: FragmentActivity, pri
     class CalendarViewPagerAdapter(fragmentActivity: FragmentActivity,
                                    private val calendar: Calendar,
                                    private val minDateCalendar: Calendar? = null,
-                                   private val listener: DatePickerDialog.OnDateSetListener?,
                                    private val dialogCustomDatePickerBinding: DialogCustomDatePickerBinding,
                                    private val indexMainItem: Int)
         : FragmentStateAdapter(fragmentActivity),
