@@ -19,7 +19,6 @@ class CalendarNavigationButton @JvmOverloads constructor(context: Context,
     var radius = 0.0f                   // Radius of the circle.
 
     private val imageReference: Int
-    private val matrixBitmap: Matrix
     private val bitmap: Bitmap
 
     init{
@@ -34,7 +33,6 @@ class CalendarNavigationButton @JvmOverloads constructor(context: Context,
             attributes.recycle()
         }
 
-        matrixBitmap = Matrix()
         bitmap = createBitmap()
     }
 
@@ -53,6 +51,7 @@ class CalendarNavigationButton @JvmOverloads constructor(context: Context,
     private val paintBitmap = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         isFilterBitmap = true
         isDither = true
+        strokeWidth = 11f
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -67,8 +66,8 @@ class CalendarNavigationButton @JvmOverloads constructor(context: Context,
 
         canvas.drawBitmap(
             bitmap,
-            11.toFloat(),
-            11.toFloat(),
+            11f,
+            11f,
             paintBitmap)
     }
 

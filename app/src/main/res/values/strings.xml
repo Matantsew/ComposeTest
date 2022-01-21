@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CompTest</string>
+    <string name="app_name">CustomDatePickerDialogTest</string>
     <string name="customer_display_product_name">Product name</string>
     <string name="customer_display_t_kg">Tare kg</string>
     <string name="zero_weight" translatable="false">0.000</string>
